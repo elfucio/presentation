@@ -1,0 +1,288 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>CSS Grid</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+	</head>
+	<body>
+		<div class="reveal">
+      <div class="slides">
+
+          <section data-transition="zoom">
+            <h1>CSS Grid</h1>
+            <span>by Elya Iskhakova</span><br>
+            <span>RS School 2020Q1</span>
+          </section>
+
+          <section class="flex-row">
+            <h3>What is CSS Grid layout?</h3>
+            <p>CSS Grid Layout allows us to construct custom grids and gives us the ability to divide a webpage into rows and columns.</p>
+            <p>It also allows us to position and size each element inside the grid using CSS only, without any change to the HTML.</p>
+          </section>
+
+          <section class="flex-row">
+            <h3>Some history</h3>
+            <ul>
+              <li>CSS Grid was first presented to W3C by Microsoft team in 2012.</li>
+              <li>In the beginning of 2017 Chrome, Firefox, Opera, and Safari had shipped support for CSS Grid.</li>
+            </ul>
+          </section>
+
+          <section class="flex-row">
+            <h3>Browser Support</h3>
+            <img src="lib/images/browsers.JPG" alt="browsers">
+            <a href="https://caniuse.com/#search=grid">Can I use... grid? 🤔</a>
+            <div></div>
+          </section>
+
+          <section>
+            <h3>Creating a grid</h3>
+            <section>
+              <pre>
+                <code class="hljs html">
+                  <div class="parent">
+                    <div class="item"></div>
+                    <div class="item"></div>
+                    <div class="item"></div>
+                    <div class="item"></div>
+                    <div class="item"></div>
+                    <div class="item"></div>
+                    <div class="item"></div>
+                    <div class="item"></div>
+                    <div class="item"></div>
+                  </div>
+                </code>
+                <code class="hljs css">
+                  .parent {
+                    display: grid;
+                  }
+                </code>
+              </pre>
+            </section>
+            <section>
+              <pre>
+                <code class="hljs css">
+                  .parent {
+                    display: grid;
+                    grid-template-rows: 200px 200px 200px;
+                    grid-template-columns: 200px 200px 200px;
+                  }
+                </code>
+              </pre>
+              <section>
+                <img src="lib/images/1.JPG" alt="example">
+                <span class="go-to-details"></span>
+              </section> 
+            </section>
+          </section>
+
+          <section>
+            <section>
+              <h3>Units</h3>
+              <div>
+                <p>px, %, fr</p>
+              </div>
+              <pre>
+                <code class="hljs css">
+                  .parent {
+                    display: grid;
+                    grid-template-rows: 1fr 1fr 1fr;
+                    grid-template-columns: 1fr 1fr 1fr;
+                  }
+                </code>
+              </pre>
+              <section>
+                <img src="lib/images/2.JPG" alt="example">
+                <span class="go-to-details"></span>
+              </section> 
+            </section>
+            <section>
+              <h3>The repeat() function</h3>
+              <pre>
+                <code class="hljs css">
+                  .parent {
+                    display: grid;
+                    grid-template-rows: repeat(3, 1fr);
+                    grid-template-columns: repeat(3, 1fr);
+                  }
+                </code>
+              </pre>
+              <section>
+                <img src="lib/images/2.JPG" alt="example">
+                <span class="go-to-details"></span>
+              </section> 
+            </section>
+          </section>
+
+          <section>
+            <section>
+              <h3>Gaps</h3>
+              <pre>
+                <code class="hljs css">
+                  grid-column-gap
+                  grid-row-gap
+                  grid-gap
+                </code>
+              </pre>
+              <pre>
+                <code class="hljs css">
+                  .parent {
+                    display: grid;
+                    grid-template-rows: 200px 200px 200px;
+                    grid-template-columns: 200px 200px 200px;
+                    grid-gap: 20px;
+                  }
+                </code>
+              </pre>
+            </section>
+            <section>
+                <img src="lib/images/3.JPG" alt="example">
+                <span class="go-to-details"></span>
+            </section> 
+          </section>
+
+          <section>
+            <section>
+              <h3>Grid lines</h3>
+              <img src="lib/images/lines.png" alt="example">
+              <span class="go-to-details"></span>
+            </section>
+            <section>
+              <pre>
+                <code class="hljs css">
+                  grid-column-start
+                  grid-column-end
+                        🡻
+                  grid-column
+                  
+                  grid-column: 1 / 3;
+                </code>
+              </pre>
+              <pre>
+                <code class="hljs css">
+                  grid-row-start
+                  grid-row-end
+                        🡻
+                  grid-row
+
+                  grid-row: 1 / 3;
+                </code>
+              </pre>
+            </section>
+            <section>
+              <pre>
+                <code class="hljs css">
+                  .box:nth-child(1) {
+                    grid-column-start: 1;
+                    grid-column-end: 4;
+                  }
+                  .box:nth-child(9) {
+                    grid-row-start: 2;
+                    grid-row-end: 4;
+                  }
+                </code>
+              </pre>
+              <section>
+                <img src="lib/images/4.JPG" alt="example">
+                <span class="go-to-details"></span>
+              </section>
+            </section>  
+          </section>
+          
+          <section>
+            <section>
+              <h3>Grid cells</h3>
+              <p>A grid cell is the smallest unit on a grid.</p>
+              <img src="lib/images/5.png" alt="example">
+              <span class="go-to-details"></span>
+            </section>
+            <section>
+              <section>
+                <h3>Grid areas</h3>
+                <p>The highlighted grid area spans two row and two column tracks.</p>
+                <img src="lib/images/6.png" alt="example">
+                <span class="go-to-details"></span>
+              </section>
+            </section>
+            <section>
+              <h3>Named Grid Areas</h3>
+              <p>The grid-area property can also be used to name parts of a grid which we can then position with the grid-template-areas property.</p>
+              <pre>
+                <code class="hljs html">
+                  <div class="container">
+                    <header></header>
+                    <nav></nav>
+                    <main></main>
+                    <aside></aside>
+                    <footer></footer>
+                  </div>
+                </code>
+              </pre>
+            </section>
+            <section>
+              <pre>
+                <code class="hljs css">
+                  header {grid-area: header;}                  
+                  nav {grid-area: nav;}                  
+                  main {grid-area: main;}                 
+                  aside {grid-area: aside;}                  
+                  footer {grid-area: footer;}
+                </code>
+              </pre>
+              <pre>
+                <code class="hljs css">
+                  .container {
+                    display: grid;
+                    grid-template-rows: 1fr 5fr 1fr;
+                    grid-template-columns: 2fr 5fr 3fr;
+                    grid-template-areas:
+                      "header  header  header"
+                      "nav     main    aside"
+                      "footer  footer  footer";
+                    grid-gap: .75em;
+                  }
+                </code>
+              </pre>
+              <span class="go-to-details"></span>
+            </section>
+            <section>
+                <img src="lib/images/7.JPG" alt="example">
+                <span class="go-to-details"></span>
+            </section> 
+          </section>
+
+          <section data-transition="zoom">
+            <h3>Conclusion</h3>
+            <section>
+              <img src="lib/images/grid-vs-flexbox.jpg" alt="example">
+              <span class="go-to-details"></span>
+          </section> 
+          </section>
+
+      </div>
+    </div>
+
+		<script src="js/reveal.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/highlight/highlight.js' },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
